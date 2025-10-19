@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Aluno {
+    int matricula;
+    char nome[50];
+    float nota1;
+    float nota2;
+    float media;
+    
+};
+
+int nomeTemNumero(const char *nome) {
+    for (int i = 0; nome[i] != '\0'; i++) {
+        char caractere = nome[i];
+        
+        if (caractere >= '0' && caractere <= '9') {
+            return 1; 
+        }
+    }
+    return 0;
+}
+
+int main () {
+     struct Aluno aluno;
+    char resposta [5];
+    
+    printf("--_Cadastro de alunos_-- \n");
+
+        printf("\n--_Iniciando Cadastro de alunos_--\n");
+    do {
+        printf("\nDigite o nome do aluno: \n");
+        scanf("%[^\n]%*c", aluno.nome);
+    
+    if (nomeTemNumero(aluno.nome)) {
+            printf("Atenção!O nome não pode conter números. Digite novamente.\n");
+    }
+} while (nomeTemNumero(aluno.nome));
+
+do {
+    printf("\nDigite o número da matrícula: \n");
+    scanf("%d", &aluno.matricula);
+     if (aluno.matricula <0.0 || aluno.matricula >90000.0) {
+         printf("Atenção! A matrícula não pode passar de 90000. Digite novamente.\n");
+     }
+} while (aluno.matricula <0.0 || aluno.matricula >90000.0);
+
+do {
+    printf("\nDigite a primeira nota: \n");
+    scanf("%f", &aluno.nota1);
+    
+    if(aluno.nota1 <0.0 || aluno.nota1 >10.0) {
+        printf("Atenção! A nota deve ser entre 0 e 10. Digite novamente.\n");
+    }
+} while(aluno.nota1 <0.0 || aluno.nota1 >10.0);
+
+do {
+    printf("\nDigite a segunda nota: \n");
+    scanf("%f", &aluno.nota2);
+    
+    if(aluno.nota2 <0.0 || aluno.nota2 >10.0) {
+        printf("Atenção! A nota deve ser entre 0 e 10. Digite novamente.\n");
+    }
+} while (aluno.nota2 <0.0 || aluno.nota2 >10.0);
+
+    aluno.media=(aluno.nota1 + aluno.nota2) / 2.0;
+    
+    char situacao[15];
+    if (aluno.media >= 6.0){
+        strcpy(situacao, "Aprovado");
+    } else{
+        strcpy(situacao, "Reprovado");
+}
+
+    printf("\n--_Resultado Final!_--\n");
+    printf("\nNome: %s\n", aluno.nome);
+    printf("Matrícula: %d\n", aluno.matricula);
+    printf("Nota 1: %.2f\n", aluno.nota1);
+    printf("Nota 2: %.2f\n", aluno.nota2);
+    printf("Media: %.2f\n", aluno.media);
+    printf("Situação: %s\n", situacao);
+
+    return 0;
+    
+}
