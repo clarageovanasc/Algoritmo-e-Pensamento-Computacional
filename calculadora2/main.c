@@ -1150,7 +1150,7 @@ int main()
             case 0:
                 printf("\n--------------------------------------------------\n");
                 printf("           Saindo da calculadora! Ate mais.\n");
-                // (BÔNUS ADICIONADO) Salva o histórico antes de sair
+                //  Salva o histórico antes de sair
                 salvarHistoricoEmArquivo(NOME_ARQUIVO_HISTORICO);
                 printf("--------------------------------------------------\n");
                 return 0; // Sai do programa
@@ -1173,7 +1173,7 @@ int main()
 
     } while (continuar == 1);
 
-    // (BÔNUS ADICIONADO) Salva também se o usuário digitar '0' aqui
+    // Salva também se o usuário digitar '0' aqui
     printf("Saindo...\n");
     salvarHistoricoEmArquivo(NOME_ARQUIVO_HISTORICO);
     return 0; 
