@@ -62,7 +62,6 @@ void lerMatriz2x2(Matriz2x2 *matriz, const char *nome) {
     }
 }
 
-// Funcao auxiliar para exibir uma matriz 2x2
 void exibirMatriz2x2(Matriz2x2 matriz) {
     printf("[ %.2lf  %.2lf ]\n", matriz.elementos[0][0], matriz.elementos[0][1]);
     printf("[ %.2lf  %.2lf ]\n", matriz.elementos[1][0], matriz.elementos[1][1]);
