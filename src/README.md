@@ -1,38 +1,40 @@
-# A2 - Ordenação e Análise de Desempenho em C
+A2 - Ordenação e Análise de Desempenho em C
 
 Este projeto implementa e compara o desempenho de três algoritmos de ordenação em C (Bubble, Insertion e Quick Sort), conforme especificado na atividade A2.
 
-- **Aluna:** Clara Geovana Caldeira da Silva
-- **RGM:** 46008896
+Aluna: Clara Geovana Caldeira da Silva
 
----
+RGM: 46008896
 
-Descrição e Métodos Implementados
+1. Descrição e Métodos Implementados
 
-O objetivo foi medir `passos` (soma de comparações e trocas/movimentações) e `tempo_ms` (tempo de CPU em milissegundos) ao ordenar os dígitos do RGM (N=8) e vetores aleatórios de N=100, 1000 e 10000.
+O objetivo foi medir passos (soma de comparações e trocas/movimentações) e tempo_ms (tempo de CPU em milissegundos) ao ordenar os dígitos do RGM (N=8) e vetores aleatórios de N=100, 1000 e 10000.
 
 Os 3 métodos escolhidos foram:
 
-1.  **Bubble Sort:** Algoritmo de complexidade `O(n²)`, escolhido como base de comparação para os métodos ineficientes.
-2.  **Insertion Sort:** Algoritmo `O(n²)` (caso médio), mas que possui um "melhor caso" de `O(n)` para dados "quase ordenados".
-3.  **Quick Sort:** Algoritmo de complexidade `O(n log n)` (caso médio). Foi escolhido para demonstrar a enorme diferença de escalabilidade em relação aos métodos `O(n²)`. Foi usada a partição de **Lomuto**.
+Bubble Sort: Algoritmo de complexidade O(n²), escolhido como base de comparação para os métodos ineficientes.
 
-Como Compilar e Rodar
+Insertion Sort: Algoritmo O(n²) (caso médio), mas que possui um "melhor caso" de O(n) para dados "quase ordenados".
 
-O projeto segue a estrutura de arquivos (`src/` e `README.md`) sugerida.
+Quick Sort: Algoritmo de complexidade O(n log n) (caso médio). Foi escolhido para demonstrar a enorme diferença de escalabilidade em relação aos métodos O(n²). Foi usada a partição de Lomuto.
 
-**Comando de compilação (usando GCC):**
-```bash
+2. Como Compilar e Rodar
+
+O projeto segue a estrutura de arquivos (src/ e README.md) sugerida.
+
+Comando de compilação (usando GCC):
+
 # Compila todos os arquivos .c da pasta src, com otimização -O1
 gcc -O1 -std=c11 src/*.c -o ordena
 
-----------------------------
-**Comando de execução:**
+
+Comando de execução:
+
 # O programa imprime o CSV formatado na saída padrão (terminal)
 ./ordena
 
-----------------------------
-Metodologia de Métricas
+
+3. Metodologia de Métricas
 
 Contagem de Passos: A métrica "passos" (reportada no CSV) segue a política de ser a soma das médias de steps_cmp (comparações) e steps_swap (movimentações/trocas), após 5 execuções.
 
@@ -40,8 +42,24 @@ Medição de Tempo: O tempo de CPU foi medido em milissegundos usando clock() da
 
 Resultados: Os valores na tabela são a média de 5 execuções (N_RUNS = 5) para cada cenário, garantindo maior estabilidade.
 
-----------------------------
-Discussão Crítica e Conclusão
+4. Tabelas de Resultados (Média de 5 Execuções)
+
+metodo,N,caso,passos,tempo_ms
+bubble,8,rgm,35,0.0006
+insertion,8,rgm,34,0.0004
+quick,8,rgm,26,0.0002
+bubble,100,aleatorio,7401,0.0284
+insertion,100,aleatorio,5467,0.0098
+quick,100,aleatorio,1108,0.0072
+bubble,1000,aleatorio,750424,2.3308
+insertion,1000,aleatorio,501012,0.7296
+quick,1000,aleatorio,18048,0.1032
+bubble,10000,aleatorio,74867697,193.5838
+insertion,10000,aleatorio,50132946,74.8378
+quick,10000,aleatorio,237263,1.3048
+
+
+5. Discussão Crítica e Conclusão
 
 Computabilidade e Correção: Todos os três métodos funcionaram e ordenaram corretamente o RGM "46008896" para "00466889", além de todas as amostras aleatórias testadas.
 
