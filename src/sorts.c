@@ -9,7 +9,7 @@ void reset_metrics(Metrics *m) {
     }
 }
 
-// --- Bubble Sort ---
+// --- 1. Bubble Sort ---
 void bubble_sort(int *v, size_t n, Metrics *m) {
     if (n < 2) return;
 
@@ -19,7 +19,6 @@ void bubble_sort(int *v, size_t n, Metrics *m) {
             m->steps_cmp++; // Conta 1 comparação
             if (v[j] > v[j + 1]) {
                 
-                // 'swap' conta como 1 "troca" 
                 m->steps_swap++; 
                 int temp = v[j];
                 v[j] = v[j + 1];
@@ -29,35 +28,33 @@ void bubble_sort(int *v, size_t n, Metrics *m) {
     }
 }
 
-// --- Insertion Sort ---
+// --- 2. Insertion Sort ---
 void insertion_sort(int *v, size_t n, Metrics *m) {
     if (n < 2) return;
 
     for (size_t i = 1; i < n; i++) {
         int key = v[i];
-        m->steps_swap++; // Conta como 1 movimentação 
+        m->steps_swap++; // Conta como 1 movimentação (pegar 'key')
         
         int j = i - 1;
 
-        // Compara e "empurra"
         while (j >= 0) {
             m->steps_cmp++; // Conta a comparação
             if (v[j] > key) {
                 v[j + 1] = v[j];
-                m->steps_swap++; // Conta 1 movimentação 
+                m->steps_swap++; // Conta 1 movimentação (o "empurrão")
                 j--;
             } else {
                 break; // Achou a posição
             }
         }
         v[j + 1] = key;
-        m->steps_swap++; // Conta 1 movimentação 
+        m->steps_swap++; // Conta 1 movimentação (colocar 'key' no lugar)
     }
 }
 
-// --- Quick Sort (com funções auxiliares) ---
+// --- 3. Quick Sort (com funções auxiliares) ---
 
-// Função auxiliar 'swap' que registra a métrica
 static void swap(int *a, int *b, Metrics *m) {
     m->steps_swap++; // Conta 1 "troca"
     int temp = *a;
@@ -65,10 +62,9 @@ static void swap(int *a, int *b, Metrics *m) {
     *b = temp;
 }
 
-// Partição Lomuto 
 static int partition_lomuto(int *v, int low, int high, Metrics *m) {
-    int pivo = v[high]; // Pivô é o último elemento
-    int i = (low - 1);  // Índice do menor elemento
+    int pivo = v[high]; 
+    int i = (low - 1);  
 
     for (int j = low; j < high; j++) {
         m->steps_cmp++; // Conta a comparação com o pivô
@@ -81,7 +77,6 @@ static int partition_lomuto(int *v, int low, int high, Metrics *m) {
     return (i + 1);
 }
 
-// Função recursiva principal
 static void quick_sort_recursive(int *v, int low, int high, Metrics *m) {
     if (low < high) {
         int pi = partition_lomuto(v, low, high, m);
@@ -90,7 +85,6 @@ static void quick_sort_recursive(int *v, int low, int high, Metrics *m) {
     }
 }
 
-// Função "wrapper" (a que o 'main' chama)
 void quick_sort(int *v, size_t n, Metrics *m) {
     if (n < 2) return;
     quick_sort_recursive(v, 0, n - 1, m);
