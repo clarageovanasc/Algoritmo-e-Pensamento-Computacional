@@ -4,8 +4,6 @@
 #include <time.h>
 #include "sorts.h" //arquivo .h
 
-// --- Configurações dos Testes ---
-#define RGM_STRING "46008896" 
 #define N_RUNS 5              // Rodar 5x para tirar a média
 
 // Tamanhos dos vetores aleatórios 
@@ -75,6 +73,13 @@ double run_sort(SortFunction fn, int *v, size_t n, Metrics *m) {
 
 // --- Função Principal ---
 int main() {
+    // --- Variável para guardar o RGM ---
+    char rgm_input_string[50]; // Um buffer para 50 chars (seguro)
+
+    // --- Pedir o RGM ao usuário ---
+    printf("Digite o seu RGM (apenas digitos): ");
+    scanf("%49s", rgm_input_string); // Lê a string (limite de 49 p/ segurança)
+
     // Define os 3 algoritmos para testar
     SortAlgorithm algos[] = {
         {bubble_sort, "bubble"},
@@ -92,7 +97,7 @@ int main() {
 
     // --- Teste do RGM ---
     int* rgm_original_array = NULL;
-    size_t rgm_n = rgm_to_array(RGM_STRING, &rgm_original_array);
+    size_t rgm_n = rgm_to_array(rgm_input_string, &rgm_original_array);
     
     for (int t = 0; t < n_algos; t++) {
         double total_time_ms = 0;
@@ -118,6 +123,7 @@ int main() {
                algos[t].name, rgm_n, avg_passos, avg_time_ms);
     }
     
+    // --- Testes de Benchmark (Aleatório) ---
     for (int s = 0; s < N_SIZES; s++) {
         size_t N = SIZES[s];
         
