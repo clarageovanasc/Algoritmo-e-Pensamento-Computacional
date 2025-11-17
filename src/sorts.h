@@ -1,7 +1,6 @@
 #ifndef SORTS_H
 #define SORTS_H
 
-// Inclui <stddef.h> para usar o tipo 'size_t', que é o tipo correto para tamanhos
 #include <stddef.h> 
 
 typedef struct {
