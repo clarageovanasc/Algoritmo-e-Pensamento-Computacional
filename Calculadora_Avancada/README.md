@@ -1,47 +1,101 @@
-Calculadora em C 2.0
-Matéria - Algoritmos e Pensamento Computacional.
+🔬 Calculadora Científica & Matricial em C
 
-É uma calculadora que a gente fez em C e que roda direto no terminal.
+Projeto final da disciplina de Algoritmos, desenvolvido em colaboração (Pair Programming). Este software vai além das operações básicas, implementando funções científicas, cálculos matriciais e persistência de dados (histórico salvo em arquivo).
 
-O que o programa faz?
-É uma calculadora semicientífica.
+🚀 Funcionalidades do Sistema
 
-Funções:
+O sistema conta com 25 funcionalidades divididas em módulos:
 
-Contas simples (soma, subtração, divisão, etc.)
+🧮 Aritmética e Álgebra
 
-Funções mais complicadas (raiz quadrada, raiz cúbica, seno, cosseno, logaritmo, potência)
+Básicos: Adição, Subtração, Multiplicação, Divisão.
 
-Coisas que usam arrays (tipo média de vários números e contas com matriz 2x2)
+Avançados: Potenciação (pow), Raiz Quadrada (sqrt), Raiz Cúbica (cbrt), Exponencial (exp), Logaritmos (Base 10 e Natural).
 
-Converte temperatura (C para F e F para C) e calcula desconto.
+Financeiro: Cálculo de Porcentagem e Descontos.
 
-O mais legal é que ela salva um histórico de tudo o que você fez em um arquivo historico.csv. Quando você abre o programa de novo, o histórico antigo aparece lá.
+📐 Trigonometria
 
-Como rodar a calculadora?
-Dentro do VS Code:
-No VS Code, vá em File > Open Folder... e abra a pasta onde o seu main.c está (ex: a pasta calculadora2.c).
+Seno, Cosseno, Tangente.
 
-Com a sua pasta aberta, vá no menu lá em cima e clique em Terminal > New Terminal.
+Funções inversas: Arco Seno, Arco Cosseno, Arco Tangente.
 
-Vai aparecer um terminal na parte de baixo do VS Code. Ele já vai estar dentro da pasta certa.
+Nota: Conversão automática de graus para radianos para precisão dos cálculos.
 
-Nesse terminal, digite o comando para compilar:
+📊 Estatística e Matrizes
 
-Bash
+Média Aritmética: Suporta input dinâmico de até 100 números.
+
+Álgebra Linear: Soma e Multiplicação de Matrizes 2x2.
+
+💾 Persistência de Dados (Diferencial)
+
+Histórico Automático: Todas as operações são salvas em memória durante a execução.
+
+Exportação CSV: Ao fechar o programa, o histórico é salvo no arquivo historico.csv, permitindo que os dados sejam abertos posteriormente no Excel.
+
+Recuperação: Ao abrir o programa, ele lê o arquivo anterior e restaura o histórico.
+
+💻 Destaques Técnicos (Code Review)
+
+O código demonstra domínio de conceitos avançados da Linguagem C:
+
+Structs (Estruturas de Dados):
+Utilizamos typedef struct para criar tipos complexos, organizando as operações e as matrizes de forma lógica.
+
+typedef struct {
+    char tipo[50];
+    double n1, n2, resultado;
+    Matriz2x2 resultadoMatriz;
+} Operacao;
+
+
+Manipulação de Arquivos (File I/O):
+Uso das funções fopen, fprintf e fscanf para garantir que os dados não sejam perdidos ao fechar o terminal.
+
+Tratamento de Erros e Buffer:
+Implementação da função limparBufferEntrada() para evitar "lixo de memória" no scanf, e validações matemáticas robustas (ex: proibição de divisão por zero ou raiz de número negativo).
+
+🛠️ Tecnologias e Bibliotecas
+
+Linguagem C (Padrão C99)
+
+<math.h>: Para cálculos científicos complexos.
+
+<string.h>: Para manipulação de nomes das operações.
+
+<stdio.h> & <stdlib.h>: Entrada/Saída e alocação.
+
+⚙️ Como Executar
+
+Compilação:
+É necessário linkar a biblioteca matemática (-lm) dependendo do compilador (especialmente no Linux/GCC).
 
 gcc main.c -o calculadora -lm
-(Aperte Enter. Se não aparecer nenhuma mensagem de erro vermelha, deu certo).
 
-Agora, na mesma linha, digite o comando para rodar o programa:
 
-Bash
+Execução:
 
 ./calculadora
-(Ou .\calculadora.exe se você estiver no Windows).
 
-Pronto! O seu programa vai rodar ali mesmo, no terminal do VS Code.
 
-Feito por:
-João Paulo Costa de Paula 
-Clara Geovana Caldeira da Silva
+Verificando o Histórico:
+Após realizar cálculos e sair (Opção 0), verifique o arquivo historico.csv criado na mesma pasta.
+
+👥 Autoria e Colaboração
+
+Este projeto foi desenvolvido em conjunto, unindo lógica de programação e organização de software.
+
+Colaborador
+
+Função Principal
+
+João Paulo
+
+Core Developer & Arquiteto de Software. Responsável pela implementação da lógica matemática complexa, manipulação de ponteiros e estruturação do sistema de arquivos (CSV).
+
+Clara Geovana
+
+Co-Developer & Documentação. Responsável pela revisão de código, implementação de validações de input, testes de usabilidade e documentação técnica (README).
+
+Desenvolvido para a Avaliação A1 de Algoritmos e Pensamento Computacional.
