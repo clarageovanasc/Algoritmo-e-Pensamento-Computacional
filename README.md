@@ -28,7 +28,7 @@ Coleção de scripts variados, testes de lógica e algoritmos de ordenação des
 
 🛠️ Tecnologias Utilizadas
 
-Linguagem: C (Standard C99/C11)
+Linguagem: C 
 
 Ferramentas: GCC Compiler, VS Code, Git/GitHub
 
